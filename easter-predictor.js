@@ -1,6 +1,6 @@
 // Author: Julio Flores
 
-let y = 2019;
+let y = 2020;
 console.log("y = " + y);
 let a = (y % 19);
 console.log("a = " + a);
@@ -13,7 +13,7 @@ console.log("d = " + d);
 let e = (b % 4);
 console.log("e = " + e);
 let f = Math.floor((b + 8) / 25);
-console.log("f = " + a);
+console.log("f = " + f);
 let g = Math.floor((b - f + 1) / 3);
 console.log("g = " + g);
 let h = ((19 * a + b - d - g + 15) % 30);

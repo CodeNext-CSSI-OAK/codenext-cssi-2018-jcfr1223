@@ -4,7 +4,7 @@ let readline = require('readline-sync');
 
 console.log("**************************************************************************");
 
-let centsString = readline.question('Input cents to be converted in Quartes, Dimes, Nickles, and Pennies ');
+let centsString = readline.question('Cents: ');
 let cents = Number(centsString);
 
 let a = Math.floor(cents / 25);

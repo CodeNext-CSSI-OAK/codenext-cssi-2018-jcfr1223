@@ -41,7 +41,7 @@ if(enterHouse === "y" || enterHouse === "yes") {
               "In fron of you there is a door. To your right is a black wall. To your left is a hallway leading further into the second floor");
               let floor2 = readline.question("Do you go through the door or the go left? ");
               if (floor2 === "door") {
-                console.log("You go through the door and fall down a trap door! You're stuck here with no way out and die of starvation :)")
+                console.log("You go through the door and fall down a trap door! You're stuck here with no way out and die of starvation :)");
               }else {
                 console.log(
                   "You go left and deeper into the second floor.",

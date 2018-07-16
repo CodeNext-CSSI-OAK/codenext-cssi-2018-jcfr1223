@@ -1,4 +1,4 @@
-//Author: FirstName LastName
+//Author: Julio Flores
 
 /******************************************************************************
                                    sumDouble
@@ -16,7 +16,10 @@ sumDouble(2, 2) → 8
 
 
 function sumDouble(a, b) {
-
+  if (a === b) {
+    return (a + b) * 2;
+  }
+  return (a + b);
 }
 
 
@@ -35,7 +38,10 @@ makes10(1, 9) → true
 
 
 function makes10(a, b) {
-
+  if (a === 10 || b === 10 || a + b === 10){
+    return true;
+  }
+  return false;
 }
 
 
@@ -55,7 +61,10 @@ parrotTrouble(false, 6) → false
 *******************************************************************************/
 
 function parrotTrouble(talking, hour) {
-
+  if (talking === true && (hour < 7 || hour > 20)){
+    return true;
+  }
+  return false;
 }
 
 
@@ -76,7 +85,12 @@ alarmClock(0, false) → "10:00"
 *******************************************************************************/
 
 function alarmClock(day, vacation) {
-
+  if (day !== 6 && day !== 0 && vacation === false){
+    return "7:00";
+  }else if (day === 0 || day == 6 && vacation === true) {
+    return "off";
+  }
+  return "10:00";
 }
 
 
@@ -98,7 +112,12 @@ caughtSpeeding(65, true) → 0
 *******************************************************************************/
 
 function caughtSpeeding(speed, isBirthday) {
-
+  if (speed >= 61 && speed <= 80 && isBirthday !== true || speed <= 85 && speed >= 75 && isBirthday === true) {
+    return "1";
+  }else if (speed <= 60 || isBirthday === true && speed <= 65 ) {
+    return "0";
+  }
+  return "2";
 }
 
 /****************************************************************************

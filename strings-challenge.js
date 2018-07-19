@@ -15,7 +15,7 @@ withoutEnd("coding") → "odin"
 *******************************************************************************/
 
 function withoutEnd(str) {
-
+  return str.substring(1, str.length - 1);
 }
 
 // Test this function.
@@ -37,7 +37,10 @@ frontAgain("ed") → true
 
 
 function frontAgain(str) {
-
+  if (str.substring(0, 2) === str.substring(str.length - 2, str.length) && str.length > 1){
+    return true;
+  }
+  return false;
 }
 
 // Test this function.
@@ -58,7 +61,14 @@ deFront("away") → "aay"
 *******************************************************************************/
 
 function deFront(str) {
-
+  if (str.charAt(0) === "a" && str.charAt(1) === "b") {
+    return str;
+  }else if (str.charAt(0) === "a") {
+    return str.charAt(0) + str.substring(2, str.length);
+  }else if (str.charAt(1) === "b") {
+    return str.substring(1, str.length);
+  }
+  return str.substring(2, str.length);
 }
 
 // Test this function.
@@ -80,7 +90,12 @@ without2("Hi") → ""
 *******************************************************************************/
 
 function without2(str) {
-
+  if (str.length === 1) {
+    return str;
+  }else if (str.substring(0, 2) === str.substring(str.length - 2, str.length)) {
+    return str.substring(2, str.length);
+  }
+  return str;
 }
 
 // Test this function.
@@ -101,7 +116,14 @@ withoutX2("Hi") → "Hi"
 *******************************************************************************/
 
 function withoutX2(str) {
-
+  if (str.startsWith("xx")) {
+    return str.substring(2, str.length);
+  }else if (str.startsWith("x")) {
+    return str.substring(1, str.length);
+  }else if (str.charAt(1) === "x") {
+    return str.charAt(0) + str.substring(2, str.length);
+  }
+  return str;
 }
 
 // Test this function.

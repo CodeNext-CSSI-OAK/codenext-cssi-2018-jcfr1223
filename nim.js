@@ -1,8 +1,8 @@
 // Author: FirstName lastName
-var readline = require("readline-sync");
+let readline = require("readline-sync");
 
 /******************************************************************************
-                                global variables
+                                global letiables
 
 stonesRemaining
 Number. Represents the number of stones that haven't yet been removed. You
@@ -17,7 +17,7 @@ Boolean. Represents if the player has chosen to quit the game (true) or not
 (false). Initialized to false in run(), can be altered in processResult().
 *******************************************************************************/
 
-var stonesRemaining, activePlayer, quit;
+let stonesRemaining, activePlayer, quit;
 
 /******************************************************************************
                                   printGreeting()
@@ -27,7 +27,8 @@ var stonesRemaining, activePlayer, quit;
 *******************************************************************************/
 
 function printGreeting() {
-
+  console.log("Welcome to NIM!");
+  console.log("By: Julio Flores");
 }
 
 /******************************************************************************
@@ -48,7 +49,8 @@ function printGreeting() {
 *******************************************************************************/
 
 function setupGame() {
-
+  stonesRemaining = 10;
+  activePlayer = Math.floor(Math.random() * 2);
 }
 
 /******************************************************************************
@@ -57,12 +59,17 @@ function setupGame() {
   Print a visual representation of the number of stones remaining (e.g., a line
   of "O" characters), along with a message that conveys this same information.
 
-  Hint: Create a local string variable and use a for loop to concatenate "O "
+  Hint: Create a local string letiable and use a for loop to concatenate "O "
   to it every iteration!
 *******************************************************************************/
 
 function printStones() {
-
+  let stones = "";
+  for (let i = 0; i < stonesRemaining; i++) {
+    stones += "O ";
+  }
+  console.log(stones);
+  console.log("There are " + stonesRemaining + " stones.");
 }
 
 /******************************************************************************
@@ -87,8 +94,30 @@ function printStones() {
 *******************************************************************************/
 
 function removeStones() {
-
+  let stonesToRemove = 0;
+  //Get and validate user's input
+  while (!(stonesToRemove >= 1 && stonesToRemove <= 3)) {
+    if (activePlayer === 0) {
+      stonesToRemove = Number(readline.question("Player one, enter stones to remove: "));
+    }else {
+      stonesToRemove = Number(readline.question("Player two, enter stones to remove: "));
+    }
+    if (!(stonesToRemove >= 1 && stonesToRemove <= 3)) {
+      console.log("Please enter a valid number");
+    }else if (stonesToRemove > stonesRemaining) {
+      stonesToRemove = 0;
+      console.log("There are only "  + stonesRemaining + " stones left.");
+      console.log("Please enter a valid number");
+    }
+  }
+  stonesRemaining -= stonesToRemove;
+  if (activePlayer === 0) {
+    activePlayer = 1;
+  }else {
+    activePlayer = 0;
+  }
 }
+
 
 /******************************************************************************
                                   processResult()
@@ -105,7 +134,15 @@ function removeStones() {
 *******************************************************************************/
 
 function processResult() {
-
+  if (activePlayer === 0) {
+    console.log("Player 1 Wins!");
+  }else {
+    console.log("Player 2 Wins!");
+  }
+  let keepPlaying = readline.question("Play Again? (yes or no)");
+  if (keepPlaying !== "yes" && keepPlaying !== "y") {
+    quit = true;
+  }
 }
 
 /******************************************************************************
@@ -126,7 +163,17 @@ function processResult() {
 *******************************************************************************/
 
 function run() {
-
+  printGreeting();
+  quit = false;
+  while (quit === false) {
+    setupGame();
+    while (stonesRemaining > 0) {
+      printStones();
+      removeStones();
+    }
+    processResult();
+  }
+  console.log("Thanks for playing!");
 }
 
 // Run the program!
